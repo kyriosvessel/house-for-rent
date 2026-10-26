@@ -13,6 +13,7 @@ export default function AgentDashboard({ onBack }) {
   const [photo, setPhoto] = useState(null)
   const [message, setMessage] = useState('')
   const [busy, setBusy] = useState(false)
+const [showAddProperty, setShowAddProperty] = useState(false)
 
   async function loadHouses(userId) {
     const { data, error } = await supabase
@@ -125,6 +126,7 @@ export default function AgentDashboard({ onBack }) {
         <button onClick={logout}>Log Out</button>
       </header>
 
+<button onClick={() => setShowAddProperty(true)}>+ ADD PROPERTY</button>
       <section style={{ background: '#f5f8fc', padding: 20, borderRadius: 16, marginTop: 20 }}>
         <h2>Add a Property</h2>
         <form onSubmit={addHouse} style={{ display: 'grid', gap: 12 }}>
