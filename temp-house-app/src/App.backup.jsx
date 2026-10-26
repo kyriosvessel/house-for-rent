@@ -1,0 +1,108 @@
+import { useState } from 'react'
+import './App.css'
+
+const houses = [
+  { id: 1, title: 'Self Contained Apartment', location: 'Benin City, Edo State', price: 350000, type: 'Self Contained', icon: '🏠' },
+  { id: 2, title: 'Modern 2 Bedroom Flat', location: 'Ikeja, Lagos State', price: 850000, type: '2 Bedroom', icon: '🏢' },
+  { id: 3, title: 'Affordable Single Room', location: 'Ibadan, Oyo State', price: 120000, type: 'Single Room', icon: '🏡' },
+]
+
+function App() {
+  const [location, setLocation] = useState('')
+  const [maxPrice, setMaxPrice] = useState('')
+  const [search, setSearch] = useState(false)
+
+  const filteredHouses = houses.filter(house =>
+    (!location || `${house.location} ${house.title}`.toLowerCase().includes(location.toLowerCase())) &&
+    (!maxPrice || house.price <= Number(maxPrice))
+  )
+
+  return (
+    <div className="app">
+      <header className="navbar">
+        <a className="logo" href="#home"><span>⌂</span> HOUSE FOR RENT</a>
+        <a className="agent-link" href="#agent">Agent Sign Up</a>
+      </header>
+
+      <main>
+        <section className="hero" id="home">
+          <div className="hero-content">
+            <span className="eyebrow">YOUR NEXT HOME STARTS HERE</span>
+            <h1>Find a house<br />you can <span>call home.</span></h1>
+            <p>Discover houses and apartments for rent across Nigeria.</p>
+
+            <form className="search-box" onSubmit={e => { e.preventDefault(); setSearch(true) }}>
+              <label>
+                Location
+                <input
+                  value={location}
+                  onChange={e => setLocation(e.target.value)}
+                  placeholder="City, state or area"
+                />
+              </label>
+              <label>
+                Maximum yearly rent
+                <select value={maxPrice} onChange={e => setMaxPrice(e.target.value)}>
+                  <option value="">Any budget</option>
+                  <option value="200000">₦200,000</option>
+                  <option value="400000">₦400,000</option>
+                  <option value="600000">₦600,000</option>
+                  <option value="1000000">₦1,000,000</option>
+                </select>
+              </label>
+              <button type="submit" className="search-button">Search Houses</button>
+            </form>
+            <small>Search for houses without creating an account.</small>
+          </div>
+        </section>
+
+        <section className="listings" id="houses">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">EXPLORE RENTALS</span>
+              <h2>{search ? 'Search Results' : 'Latest Houses'}</h2>
+            </div>
+            <span className="house-count">{filteredHouses.length} houses</span>
+          </div>
+
+          {filteredHouses.length ? (
+            <div className="house-grid">
+              {filteredHouses.map(house => (
+                <article className="house-card" key={house.id}>
+                  <div className="house-image"><span>{house.icon}</span><span className="available">Available</span></div>
+                  <div className="house-info">
+                    <span className="house-type">{house.type}</span>
+                    <h3>{house.title}</h3>
+                    <p className="location">📍 {house.location}</p>
+                    <p className="price">₦{house.price.toLocaleString('en-NG')} <small>/ year</small></p>
+                    <a className="contact-button" href="#agent">View Contact</a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="empty">No sample houses match your search. Try another location or budget.</p>
+          )}
+          <p className="demo-note">Sample listings for demonstration. Real agent listings will be connected later.</p>
+        </section>
+
+        <section className="agent-section" id="agent">
+          <div>
+            <span className="eyebrow">ARE YOU A PROPERTY AGENT?</span>
+            <h2>Have a house to rent?</h2>
+            <p>Join HOUSE FOR RENT and help people find their next home.</p>
+          </div>
+          <a href="mailto:hello@houseforrent.ng?subject=Agent%20Registration%20Enquiry" className="agent-button">Become an Agent →</a>
+        </section>
+      </main>
+
+      <footer>
+        <a className="logo" href="#home"><span>⌂</span> HOUSE FOR RENT</a>
+        <p>Making it easier to find a home in Nigeria.</p>
+        <small>© {new Date().getFullYear()} HOUSE FOR RENT</small>
+      </footer>
+    </div>
+  )
+}
+
+export default App

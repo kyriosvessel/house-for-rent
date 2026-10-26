@@ -1,0 +1,243 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* HOUSE FOR RENT - homepage layout recovery */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #183b2b; background: #f5f9f5; }
+.navbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:18px 5%; background:#fff; }
+.logo { font-size:22px; font-weight:900; color:#167344; }
+.hero { padding:48px 6%; background:linear-gradient(135deg,#e4f6e9,#fff); border-radius:0 0 28px 28px; }
+.hero-content { max-width:750px; margin:auto; }
+.eyebrow { color:#16804b; font-weight:800; text-transform:uppercase; letter-spacing:1px; }
+.hero h1 { font-size:clamp(34px,7vw,58px); line-height:1.08; margin:14px 0; }
+.hero p { font-size:18px; line-height:1.6; }
+.search-box { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; padding:12px; background:white; border-radius:16px; box-shadow:0 5px 24px #173c2b12; }
+.search-box input,.search-box select { flex:1 1 140px; min-width:0; padding:14px; border:1px solid #d6e3d9; border-radius:10px; font-size:16px; }
+.search-button,.contact-button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:13px 18px; background:#16804b; color:white; border:0; border-radius:10px; font-weight:800; font-size:16px; text-decoration:none; cursor:pointer; }
+.listings { padding:32px 5%; max-width:1200px; margin:auto; }
+.section-heading { font-size:clamp(24px,5vw,34px); margin:0 0 22px; }
+.house-count { color:#64776a; margin-bottom:18px; }
+.house-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:20px; }
+.house-card { min-width:0; overflow:hidden; background:#fff; border:1px solid #e2ebe4; border-radius:18px; box-shadow:0 5px 18px #173c2b0c; }
+.house-image { display:block; width:100%; height:210px; object-fit:cover; background:#e4eee6; }
+.house-info { padding:18px; }
+.house-type { display:inline-block; padding:6px 10px; border-radius:20px; background:#e5f6eb; color:#167344; font-size:13px; font-weight:800; }
+.location { margin:12px 0; color:#627267; line-height:1.5; overflow-wrap:anywhere; }
+.price { font-size:23px; font-weight:900; color:#167344; margin:12px 0; overflow-wrap:anywhere; }
+.available { color:#16804b; font-weight:700; }
+.contact-button { width:100%; margin-top:10px; }
+.demo-note { margin-top:20px; color:#66776c; font-size:14px; line-height:1.5; }
+.empty { padding:28px 12px; text-align:center; color:#66776c; background:white; border-radius:14px; }
+@media(max-width:600px) {
+  .navbar { padding:15px 5%; }
+  .logo { font-size:19px; }
+  .hero { padding:34px 5%; }
+  .hero p { font-size:16px; }
+  .listings { padding:26px 5%; }
+  .house-image { height:200px; }
+  .search-button { width:100%; }
+}
+
+body{margin:0;background:#f5f8f5;color:#193b2b;font-family:Arial,sans-serif}.navbar{padding:16px 5%;background:white;border-bottom:1px solid #dce8de}.logo{color:#167344;font-weight:900;font-size:22px}.hero{padding:35px 5%;background:linear-gradient(135deg,#e1f3e6,white);border-radius:0 0 24px 24px}.hero h1{font-size:clamp(32px,8vw,48px);line-height:1.15;font-weight:900}.search-box{display:grid;gap:12px;padding:15px;background:white;border:1px solid #dce8de;border-radius:16px}.search-box input,.search-box select{width:100%;min-height:48px;padding:12px;border:1px solid #d5e2d7;border-radius:10px;font-size:16px}.listings{padding:28px 5%}.section-heading{font-size:27px;font-weight:900}.house-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}.house-card{overflow:hidden;background:white;border:1px solid #dce8de;border-radius:18px;box-shadow:0 4px 14px #173c2b0d}.house-image{width:100%;height:210px;object-fit:cover}.house-info{padding:16px}.price{font-size:24px;font-weight:900;color:#167344}.search-button,.contact-button{min-height:48px;border:0;border-radius:10px;background:#167344;color:white;font-weight:800;font-size:16px;padding:12px}@media(min-width:650px){.house-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:950px){.house-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* PREMIUM MOBILE REDESIGN */
+body{background:#f5f7f4;color:#193b2a;font-family:Arial,sans-serif}.navbar{position:relative;background:#fff;padding:18px 5%;border-bottom:1px solid #e0e8e0}.logo{color:#176b42;font-size:23px;font-weight:900}.hero{background:#164f35;color:white;padding:38px 6%;border-radius:0 0 28px 28px}.hero h1{font-size:clamp(34px,9vw,52px);line-height:1.1;letter-spacing:-1px}.hero p{color:#e0eee4;line-height:1.7}.eyebrow{color:#bce8c9;font-weight:800;letter-spacing:1px}.search-box{display:grid;gap:12px;margin-top:22px;padding:16px;background:white;border-radius:18px;box-shadow:0 8px 24px #102d1d22}.search-box input,.search-box select{width:100%;min-height:50px;padding:12px;border:1px solid #dce6dd;border-radius:10px;background:#fff;font-size:16px}.search-button,.contact-button{min-height:50px;background:#197548;color:white;border:0;border-radius:11px;padding:13px;font-weight:800;font-size:16px}.listings{max-width:1100px;margin:auto;padding:30px 5%}.section-heading{font-size:28px;line-height:1.25;font-weight:900}.house-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}.house-card{overflow:hidden;background:white;border:1px solid #e0e8e0;border-radius:20px;box-shadow:0 5px 18px #183b2a0d}.house-image{display:block;width:100%;height:225px;object-fit:cover}.house-info{padding:18px}.house-type{display:inline-block;background:#e8f5eb;color:#176b42;padding:6px 10px;border-radius:30px;font-weight:800;font-size:13px}.location{color:#66766b;line-height:1.5}.price{color:#176b42;font-size:25px;font-weight:900}.contact-button{display:flex;width:100%;align-items:center;justify-content:center;text-decoration:none}.empty{padding:25px;background:white;border:1px solid #e0e8e0;border-radius:16px;text-align:center}@media(min-width:650px){.house-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:950px){.house-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* BOTTOM SECTION AND FORM FIX */
+.agent-section{margin:30px 5%;padding:30px 22px;background:#e8f3eb;border-radius:22px;text-align:center;color:#111}.agent-section h2{color:#111;font-size:28px}.agent-section p{color:#111;line-height:1.7}.agent-button{display:inline-flex;justify-content:center;align-items:center;margin-top:15px;padding:14px 20px;background:#176b42;color:#fff;text-decoration:none;border-radius:12px;font-weight:800}.site-footer,footer{padding:28px 5%;background:#123b29;color:#fff;text-align:center}footer p,footer small{color:#fff;line-height:1.8}input,select,textarea,option{color:#111!important;background-color:#fff}input::placeholder,textarea::placeholder{color:#555!important}
+
+/* BIGGER SITE NAME AND AGENT SIGN-UP BUTTON */
+
+
+/* Header and agent button sizing */
+.logo{font-size:30px!important;font-weight:900;letter-spacing:-0.8px}
+.agent-button{font-size:18px!important;padding:17px 26px!important;min-height:56px;font-weight:900}
+@media(max-width:600px){.logo{font-size:27px!important}.agent-button{width:100%;box-sizing:border-box}}
+.navbar .logo,.logo{font-size:32px!important;font-weight:900!important;letter-spacing:-0.5px!important}.agent-link{display:inline-block!important;font-size:18px!important;font-weight:900!important;padding:12px 16px!important;background:#176b42!important;color:white!important;border-radius:10px!important;text-decoration:none!important}@media(max-width:600px){.navbar .logo,.logo{font-size:26px!important}.agent-link{font-size:16px!important;padding:10px!important}}
+.section-heading,.agent-section{background:#570019!important;color:#fff!important;border:1px solid #a34a61!important;border-radius:16px!important;padding:18px 20px!important;box-shadow:0 8px 22px rgba(55,0,18,.25)!important}.section-heading{border-left:6px solid #d6a0ad!important;text-shadow:0 2px 4px #26000d!important}.agent-section{padding:28px 22px!important;background:linear-gradient(145deg,#570019,#31000e)!important}.agent-section h2,.agent-section p,.agent-section span{color:#fff!important;text-shadow:0 2px 4px rgba(0,0,0,.3)!important}.agent-button{background:#fff!important;color:#570019!important;border:2px solid #d6a0ad!important;box-shadow:0 5px 12px rgba(0,0,0,.25)!important}
+
+.agent-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}.agent-actions .agent-button{flex:1;min-width:120px;text-align:center;cursor:pointer;border:0;border-radius:8px;padding:14px 18px;font-weight:700;font-size:15px}
+body{margin:0} main{width:100%;max-width:100%;padding:16px!important;margin:0 auto!important} input,select,textarea,button{max-width:100%;font-size:16px} img{max-width:100%;height:auto}
+button{min-height:44px;cursor:pointer;border-radius:8px} input,select,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #ddd}
